@@ -1,0 +1,51 @@
+Create virtual box
+install windows 10 and install guest editions.
+
+https://www.microsoft.com/en-us/evalcenter/evaluate-sql-server-2019?filetyp=EXE
+
+https://www.microsoft.com/en-us/evalcenter/evaluate-sql-server-2019
+
+download exe
+
+invoke downloaded .exe
+
+download media
+
+download iso.
+
+right click on iso and mount.
+
+go into the directory and run setup (run as adminstrator) 
+
+installation >>
+new sql server with standalone installation ...... 
+-- skip updates
+fir wall off >> 
+
+firewall.cpl
+turn windows firewall on / off.
+turn off firewall.
+
+database engine
+integration service
+client tools connectivity.
+integration services.
+client tools SDK
+sql client connectivity SDK
+
+ideally root not in C drive.
+microsoft recomends S drive
+
+Default instance if it is first instance.
+Or named instance.
+
+PRODDB
+
+service accounts all automatic.
+
+CHECK the checkbox grant ....
+next
+
+windows authentication..
+
+check box in memory .
