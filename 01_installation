@@ -56,3 +56,17 @@ install ssms
 validate installation
 
 C:\Program Files\Microsoft SQL Server\150\Setup Bootstrap\Log
+
+
+un install:
+
+contro pannel>>
+add or remove programs>>
+
+microsoft sqlserver 2019(64)
+uninstall
+remove 
+which instance to remove.
+don't uninstall shared features.
+
+C:\Program Files\Microsoft SQL Server\150\Setup Bootstrap\Log
