@@ -1,0 +1,9 @@
+dbcc log(0)
+go
+dbcc loginfo
+go
+dbcc sqlperf(logspace)
+go
+dbcc log(dbname,3)
+
+select * from fn_dblog(null,null)
