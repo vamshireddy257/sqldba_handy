@@ -1,0 +1,20 @@
+Right click on DB mail----> config DB mail
+           ( choose)  setup DB mail
+                next,yes
+
+pro.. name:
+     add--> account name=
+     email= vamshireddy1555@gmail.com
+     server name=
+     port=587
+     check box server SSL
+
+(choose) Basic authentication
+         Username=( email) vamshireddy1555@gmail.com
+         pwd=
+          Ok,next.
+
+ public (check box)
+ default profile = yes
+  next,next,finish
+ click pn DB mail & sent
