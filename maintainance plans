@@ -1,0 +1,30 @@
+Right click on-- maintainance plans -- new
+                      name=
+
+      #### We have 3 types of options: 1. bkp task
+                                       2. Old bkp deletion
+                                       3. Notify (through mail) if any fail
+
+1.backup task:
+   Tool box----> maintainance plan tasks ---> bkp db task
+     ( check box, ignore db where state is not online)
+     
+2.Old bkp deletion:
+      maintainance plan clean task---> select bkp files
+                                       select search folder & deletion folder
+                                       folder loc:
+                                       file extension:
+                                      ( check box ) Include folders and delete files
+
+3.Notify:
+
+
+  -----------------------------------------------------
+  Go to maintainance plans---->( +) select file ---> execute
+
+   #### if fails any------> go to view history & check DB integrity task.
+                                      
+
+                                      
+                                       
+      
