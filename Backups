@@ -1,0 +1,65 @@
+dbcc log(0)
+go
+dbcc loginfo
+go
+dbcc sqlperf(logspace)
+go
+dbcc log(dbname,3)
+
+select * from fn_dblog(null,null)
+
+GO
+SELECT
+[Operation], [Transaction Name], [Transaction SID], SUSER_SNAME ([Transaction SID]) AS [WhoDidIt?]
+FROM fn_dblog (NULL, NULL)
+WHERE [Operation] = N'LOP_BEGIN_XACT'
+AND [Transaction Name] = 'UPDATE';
+
+
+1.FULL BACKUP: 
+   ## It will take the backup of whole db including all datafiles and logfiles nd also committed , uncommitted data.
+   ## after every successful full backup, The DCM pages will be reset automatically.  ( DCM=Differential changed map )
+
+How to take full backup:
+            Right click on DB----> Tasks ---> backup
+            default loc: C:/program files/microsoft sql server/MSSQL 15.MSSQLSERVER/MSSQL/Backup
+Media Options:
+Backup set will expire: after=0 days
+compression: 
+#### ( to enable compression settings ) ####
+     serving settings
+     go to sql server--->properties---->DB settings
+                                     (  check box)--compression bkp at serevr level.
+
+----------------------------------------------------------
+script: Backup database <db name> to disk= <'file name.bak'>
+---------------------------------------------------------
+
+
+2. Differential backup:
+   ### These backups are Cumulative backups, It will take all changes since last full bkp.
+  ---script: Backup database <db name> to disk= <'file name.bak'> with differential
+
+3. T-log/Transaction log Backup:
+  ### These are Incremental bkps, It will take only logfiles.
+
+4.Tail log bkp:
+  ## It will take the backup from last Transaction log Backup
+  ## If db is in (Recovery= simple) simple mode, we can't take tail log bkps.
+  ## We can take these bkps,if it is in only full recovery model. ( recovery=full) 
+  ------ script: Backup database <db name> to disk= <'file name.bak'> with no_truncate-----
+
+5. Copy only full bkp:
+   ### It will also take whole db including all datafiles and logfiles,but it won't touch/reset the DCM pages.
+                  ( These bkps we will take only in middle of backup startegy )
+------ script: Backup database <db name> to disk= <'file name.bak'> with copy_only-----
+
+6.file and file grp bkp:
+
+7.mirror bkp:
+
+8.split bkp/striped bkp:
+   ## if db is in BIG size, we can use this bkp.
+   ## there is no option of GUI for this bkp
+--- script: Backup database <db name> to disk='path01/filename.bak',disk='path02/filename.bak'-----
+
