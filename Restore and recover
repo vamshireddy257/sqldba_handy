@@ -1,0 +1,11 @@
+ #### RESTORE ###
+  Right click on Db----> restore 
+                choose Device ---> select bkp file----> ok.
+  files:
+  options:
+
+
+### RECOVER ###
+ 1. Full recovery model
+ 2. simple recovery model
+ 3. Bulk logged recovery model
