@@ -1,0 +1,25 @@
+### NOTE : SQL serevr Agent should be up and running while creating and sheduling jobs 
+  Right click on JOBS ----> General: name=
+                                     owner=sa
+                                     categ: uncategorized
+          steps---> click on new
+            step name= 
+             type= T-sql
+             run as: (default)
+             DB =select db
+             command:  
+            select all and parse it , ok.
+ shedule:
+    name=
+    type = recurring
+  frequency :
+(enable)
+
+Right click on JOB shedule ( which we created now ) &----> start
+
+   -------------------------------------------------------
+      To check Issues of JOBS:
+         Right click on JOB-----> view History
+                                go to + symbol and check with data and time
+
+   
