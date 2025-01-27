@@ -1,10 +1,15 @@
 Create virtual box
-install windows 10 and install guest editions.
+1.0 : VIRTUAL BOX CONFIGURATION:
+RAM: 
+CPU : 
+STORAGE: 
+
+2.0 : install windows 10 and install guest editions.
 
 Windows OS:
 https://www.microsoft.com/en-in/evalcenter/download-windows-server-2019
 
-DB
+3.0 : DB
 https://go.microsoft.com/fwlink/?LinkID=866662
 
 download exe
