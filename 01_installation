@@ -1,79 +1,114 @@
-Create virtual box
+1.Create virtual box
+     install windows 10 and install guest editions.
+2. Windows OS:
+      https://www.microsoft.com/en-in/evalcenter/download-windows-server-2019
+3.DB
+   https://go.microsoft.com/fwlink/?LinkID=866662
+
 1.0 : VIRTUAL BOX CONFIGURATION:
-RAM: 
-CPU : 
-STORAGE: 
+       RAM: 8GB
+       CPU : 3
+       STORAGE: 120GB
+------start server-----
+ select Datacenetr Evaluation (Desktop exp)
+   click on custom
+Username: Administrator
+password: Mssql@123
+     server Manager (YES)
+      add roles and features
+next,next,next,next
+ server roles: .net framework 3.5 (select 3 options)
+              1 .net framework 3.5
+              2 HTTP activation
+              3 Non-HTTP activation
+  Install
+  Close
+Go to This PC
+ properties:: Remote settings
+        select Allow remote connections to this computer
+         apply , ok.
+close the server
+attach sql server software
+ settings --- storage--Optical drive--choose virtual optical disk-- attach sql server 2019 x64_ENU DEV.iso
 
-2.0 : install windows 10 and install guest editions.
+  This PC----CD drive(D):sqlsetup(right click)---- Setup file(Run as administrator)
 
-Windows OS:
-https://www.microsoft.com/en-in/evalcenter/download-windows-server-2019
+    Installation:
+(select 1st option) New sql server standalone
+     specify=Developer
+       accept
+     Don't check for updates
+      next
 
-3.0 : DB
-https://go.microsoft.com/fwlink/?LinkID=866662
-
-download exe
-
-invoke downloaded .exe
-
-download media
-
-download iso.
-
-right click on iso and mount.
-
-go into the directory and run setup (run as adminstrator) 
-
-installation >>
-new sql server with standalone installation ...... 
--- skip updates
-fir wall off >> 
-
-firewall.cpl
-turn windows firewall on / off.
-turn off firewall.
-
-database engine
-integration service
-client tools connectivity.
-integration services.
-client tools SDK
-sql client connectivity SDK
-
-ideally root not in C drive.
-microsoft recomends S drive
-
-Default instance if it is first instance.
-Or named instance.
-
-PRODDB
-
-service accounts all automatic.
-
-CHECK the checkbox grant ....
-next
-
-windows authentication..
-
-check box in memory .
-
-install ssms
+Instance Features:
+   select--- DB engine services
+             sql server replication
+             Full text and semantic extraction
+  shared features: 
+     select-----Client tools connectivity
+                Client tools Backwards compatibility
+                Client tools SDK
+                SQL client connectivity SDK
+     Next
+Instance Configuration
+   Next
+Server Configuration: startup type= 1.Manual
+                                    2.Automatic
+                                    3.Manual
+                                    4.Disabled
+   Next
+  DB engine configuration: 
+                choose-- Windows authentication mode
+                         Add current user
+                          next,install,close.
 
 
-validate installation
+Now Download SSMS
+  Double click on ssms soft -----Install---Restart
 
-C:\Program Files\Microsoft SQL Server\150\Setup Bootstrap\Log
+  start ssms
+
+----------------
+Make sure: win+R = lusrmgr.msc
+           Groups---Administrator---members(username=administrator)
+
+Create Custom Service Account:    ( win+R = lusrmgr.msc )
+    Right click on USERS-----New user
+                    Username=sql_prd_svc_act
+                    password=Oracle@123
+
+(search as)--- Services
+ right click on----- sql server(MSSQLSERVER)        
+             properties---logon---this account (browse)
+                                  username=sql_prd_svc_act  (check names)  
+                                   password=Oracle@123
+
+Make Accounts Local admin:    ( win+R = lusrmgr.msc ) 
+                            GROUPS----Administrator---Add
+                                                       Username=sql_prd_svc_act
+                                                       password=Oracle@123
+                                                  Apply---ok.
+               
+      Restart Sqlserver MSSQLSERVER and Sql server Agent (--restart both--)
+
+------------Change Service Account from SQLserver configuration manager(sscm)-------
+
+1. ( serach as )---SQLserver 2019 configuration manager
+                 sql server services--->Double click on Agent---->Properties---->logon
+                                                                             This account(browse)
+                                                                Username=sql_prd_svc_act
+                                                                password=Oracle@123
+                Restart sql server agent ( double click and restart)
+
+2. SQLserver configuration manager----> sql serevr Network configuration
+                                      protocols (enable all)
+                      double click on TCP/ip---->1.protocol
+                                                 2.Ip addr ---> IP all-->TCP port=1433 (default port)
+
+##### NOTE: We can change port number,but we have to restart the sql serevr (it's a DOWN TIME activity) ########
 
 
-un install:
 
-contro pannel>>
-add or remove programs>>
 
-microsoft sqlserver 2019(64)
-uninstall
-remove 
-which instance to remove.
-don't uninstall shared features.
 
-C:\Program Files\Microsoft SQL Server\150\Setup Bootstrap\Log
+
