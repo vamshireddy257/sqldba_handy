@@ -1,0 +1,36 @@
+### NOTE: SQL Server Agent should be up & running , then only we can get alerts.
+  There are 3 types of Alerts;
+               1.SQL server EVENT alerts
+               2.SQL server PERFORMANCE alerts
+               3.SQL server WMI
+
+  1.SQL server EVENT alerts: 
+            ## If we know the exact error number,then we can go with EVENT Alerts.
+   (If any Login failures--> ERROR=18456
+           Datafiles full---> ERROR=1105
+           Logfiles full---> ERROR= 9002)
+
+  go to SQL Server Agent----> (+) alerts (right click)----> new 
+                                                  name= Login failure
+                                                  type= event alert
+                                                  error num= 18456
+              ( check box) notify operator
+                   select mail & ok.
+
+
+2.SQL server PERFORMANCE alerts:
+    ### If any performance issues like CPU, Memory, Blocking sessions, etc...
+   go to alerts---> new alert--->name= cpu
+                                 type= PERFORMANCE alerts
+                                 obj= workload group stats
+                                 counter= cpu usage%
+                                 instance= internal
+                                alert if counter: rises above
+                                value=80
+                   ( check box) Notify operators
+                        select mail & ok.
+
+
+
+
+              
